@@ -150,18 +150,6 @@ function! AutoPairsInsert(key)
       endif
     endif
 
-    " Fly Mode, and the key is closed-pairs, search closed-pair and jump
-    if g:AutoPairsFlyMode && has_key(b:AutoPairsClosedPairs, a:key)
-      let n = stridx(after, a:key)
-      if n != -1
-        return repeat(s:Right, n+1)
-      end
-      if search(a:key, 'W')
-        " force break the '.' when jump to different line
-        return "\<Right>"
-      endif
-    endif
-
     " Insert directly if the key is not an open key
     return a:key
   end
